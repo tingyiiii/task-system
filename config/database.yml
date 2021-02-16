@@ -5,12 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: task_system
+  database: task_system_development
 
 test:
   <<: *default
-  database: task_system
+  database: task_system_test
 
 production:
   <<: *default
-  database: task_system
+  database: task_system_production
