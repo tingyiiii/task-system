@@ -15,6 +15,7 @@
       <td><%= link_to task.title, task %></td>
       <td><%= task.description %></td>
       <td><%= link_to "編輯", edit_task_path(task) %></td>
+      <td><%= link_to "刪除", task, method: :delete, data: { confirm: "確定要刪除#{task.title}任務嗎?"} %></td>
     </tr>
   <% end %>
   </tbody>
