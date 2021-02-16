@@ -11,7 +11,7 @@
 
 ***
 ## Ruby & Rails version
-- Ruby: 2.6.6
+- Ruby: 2.7.2
 - Rails: 6.0.3
 
 ***
