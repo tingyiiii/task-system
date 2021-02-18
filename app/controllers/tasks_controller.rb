@@ -2,7 +2,16 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tasks = Task.all
+    if params[:order]
+      case params[:order]
+      when "created_asc"
+        @tasks = Task.created_time_asc
+      when "created_desc"
+        @tasks = Task.created_time_desc
+      end
+    else
+      @tasks = Task.all
+    end
   end
 
   def new

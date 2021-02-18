@@ -2,5 +2,11 @@ en:
   site_title: 'Task Managemet System'
   are_you_sure_to_delete: 'Are you sure to delete %{item}?'
   link:
+    root: 'Home'
+    create_a_new_task: "Create New Task"
     edit: 'Edit'
     delete: 'Delete'
+  order:
+    created_asc: 'Date Created'
+    created_desc: 'Date Created(Decending)'
+    submit: 'Order'
