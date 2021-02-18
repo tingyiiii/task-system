@@ -1,6 +1,6 @@
 <h1><%= I18n.t("tasks.heading.index") %></h1>
 
-<%= form_tag({ controller: "tasks", action: "index" }, method: "get") do %>
+<%= form_tag({ controller: "tasks", action: "index" }, method: "get", class: "order") do %>
   <%= radio_button_tag(:order, "created_asc") %>
   <%= label_tag(:order_created_asc, I18n.t("order.created_asc")) %>
   <%= radio_button_tag(:order, "created_desc") %>
@@ -22,7 +22,7 @@
     <tr>
       <td><%= link_to task.title, task %></td>
       <td><%= task.description %></td>
-      <td><%= task.created_at %></td>
+      <td><%= "#{task.created_at.strftime("%Y")}/#{task.created_at.strftime("%m")}/#{task.created_at.strftime("%d")}" %></td>
       <td><%= link_to I18n.t("link.edit"), edit_task_path(task) %></td>
       <td><%= link_to I18n.t("link.delete"), task, method: :delete, data: { confirm: "#{I18n.t("are_you_sure_to_delete", item: task.title)}" } %></td>
     </tr>
