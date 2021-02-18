@@ -1,7 +1,6 @@
 language: ruby
 rvm:
 - 2.7.2
-install: bundle install
 services:
   - postgresql
 cache:
