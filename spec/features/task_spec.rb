@@ -9,10 +9,8 @@ RSpec.describe Task, type: :feature do
       3.times do
         Task.create(title: title, description: description)
       end
-
       visit tasks_path
 
-      # test if the data entries are shown in index page
       expect(page).to have_css(
                                 'table tbody tr:first-child td:first-child', 
                                 text: "#{Task.first.title}"
