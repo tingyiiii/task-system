@@ -2,5 +2,11 @@ zh-TW:
   site_title: '任務管理系統'
   are_you_sure_to_delete: '你確定要刪除%{item}嗎？'
   link:
+    root: "首頁"
+    create_a_new_task: "新增任務"
     edit: '修改'
     delete: '刪除'
+  order:
+    created_asc: '建立時間(舊→新)'
+    created_desc: '建立時間(新→舊)'
+    submit: '排序'

@@ -120,6 +120,51 @@ RSpec.describe Task, type: :feature do
     end
   end
 
+  describe 'order' do
+    before :each do
+      @tasks = []
+      3.times do
+        task = Task.create(title: title, description: description)
+        @tasks << task
+      end
+      visit tasks_path
+    end
+
+    it 'order by created time asc' do
+      within('table') do
+        expect(page).to have_content(
+          /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
+        )
+      end
+      within('form.order') do
+        choose I18n.t("order.created_asc")
+        click_on I18n.t("order.submit")
+      end
+      within('table') do
+        expect(page).to have_content(
+          /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
+        )
+      end
+    end
+
+    it 'order by created time desc' do
+      within('table') do
+        expect(page).to have_content(
+          /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
+        )
+      end
+      within('form.order') do
+        choose I18n.t("order.created_desc")
+        click_on I18n.t("order.submit")
+      end
+      within('table') do
+        expect(page).to have_content(
+          /#{@tasks[2][:title]}+#{@tasks[1][:title]}+#{@tasks[0][:title]}/
+        )
+      end
+    end
+  end
+
   private
   def create_task_with(form, title, description)
     visit new_task_path

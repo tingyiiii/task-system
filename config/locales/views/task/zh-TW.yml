@@ -18,4 +18,6 @@ zh-TW:
       placeholder:
         title: "例：掃地"
         description: "例：順便把垃圾拿出去外面丟"
+    form_select:
+      
     back_to_task_list: '回到任務清單' 
