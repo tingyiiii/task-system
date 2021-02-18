@@ -1,0 +1,6 @@
+en:
+  site_title: 'Task Managemet System'
+  are_you_sure_to_delete: 'Are you sure to delete %{item}?'
+  link:
+    edit: 'Edit'
+    delete: 'Delete'

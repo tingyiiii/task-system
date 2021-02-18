@@ -1,0 +1,6 @@
+zh-TW:
+  site_title: '任務管理系統'
+  are_you_sure_to_delete: '你確定要刪除%{item}嗎？'
+  link:
+    edit: '修改'
+    delete: '刪除'

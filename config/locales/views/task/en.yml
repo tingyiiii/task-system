@@ -1,0 +1,21 @@
+en:
+  tasks:
+    heading:
+      index: 'Task List'
+      create_a_new_task: 'Create tasks'
+      view_task: 'Task:'
+      edit_the_task: 'Edit Task'
+    link:
+      create_a_new_task: 'Create a new task'
+    table:
+      title: 'Task'
+      priority: 'Priority'
+      start_time: 'Start Time'
+      end_time: 'End Time'
+      status: 'Status'
+      description: 'Description'
+    form:
+      placeholder:
+        title: "e.g. Sweep the floor"
+        description: "e.g. Also take garbage out to the bin"
+    back_to_task_list: 'Back to Task List' 

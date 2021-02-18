@@ -46,25 +46,25 @@ RSpec.describe Task, type: :feature do
     it 'with title and description' do
       create_task_with("#new_task", title, description)
       expect(Task.all.size).to be 1
-      expect(page).to have_content('任務新增成功！')
+      expect(page).to have_content("#{I18n.t('tasks.create.notice')}")
       expect(page).to have_content(title)
       expect(page).to have_content(description)
     end
 
     it 'without title and description' do
       create_task_with("#new_task", nil, nil)
-      expect(page).to have_content('Title can\'t be blank')
-      expect(page).to have_content('Description can\'t be blank')
+      expect(page).to have_content("#{I18n.t('activerecord.attributes.task.title')} #{I18n.t('activerecord.errors.models.task.attributes.title.blank')}")
+      expect(page).to have_content("#{I18n.t('activerecord.attributes.task.description')} #{I18n.t('activerecord.errors.models.task.attributes.description.blank')}")
     end
 
     it 'without title' do
       create_task_with("#new_task", nil, description)
-      expect(page).to have_content('Title can\'t be blank')
+      expect(page).to have_content("#{I18n.t('activerecord.attributes.task.title')} #{I18n.t('activerecord.errors.models.task.attributes.title.blank')}")
     end
 
     it 'without description' do
       create_task_with(".new_task", title, nil)
-      expect(page).to have_content('Description can\'t be blank')
+      expect(page).to have_content("#{I18n.t('activerecord.attributes.task.description')} #{I18n.t('activerecord.errors.models.task.attributes.description.blank')}")
     end
   end
 
@@ -89,25 +89,25 @@ RSpec.describe Task, type: :feature do
 
     it 'with new title and new description' do
       edit_task_with(".edit_task", new_title, new_description)
-      expect(page).to have_content('任務更新成功！')
+      expect(page).to have_content("#{I18n.t('tasks.update.notice')}")
       expect(page).to have_content(new_title)
       expect(page).to have_content(new_description)
     end
 
     it 'without title and new description' do
       edit_task_with(".edit_task")
-      expect(page).to have_content('Title can\'t be blank')
-      expect(page).to have_content('Description can\'t be blank')
+      expect(page).to have_content("#{I18n.t('activerecord.attributes.task.title')} #{I18n.t('activerecord.errors.models.task.attributes.title.blank')}")
+      expect(page).to have_content("#{I18n.t('activerecord.attributes.task.description')} #{I18n.t('activerecord.errors.models.task.attributes.description.blank')}")    
     end
 
     it 'without title' do
       edit_task_with(".edit_task", nil, new_description)
-      expect(page).to have_content('Title can\'t be blank')
+      expect(page).to have_content("#{I18n.t('activerecord.attributes.task.title')} #{I18n.t('activerecord.errors.models.task.attributes.title.blank')}")
     end
 
     it 'without description' do
       edit_task_with(".edit_task", new_title)
-      expect(page).to have_content('Description can\'t be blank')
+      expect(page).to have_content("#{I18n.t('activerecord.attributes.task.description')} #{I18n.t('activerecord.errors.models.task.attributes.description.blank')}")    
     end
   end
 
@@ -115,9 +115,10 @@ RSpec.describe Task, type: :feature do
     it do
       Task.create(title: title, description: description)
       visit tasks_path
-      click_on '刪除'
+
+      click_on "#{I18n.t('link.delete')}"
+      expect(page).to have_content("#{I18n.t('tasks.destroy.notice')}")
       expect(Task.all.size).to be 0
-      expect(page).to have_content('任務已刪除！')
     end
   end
 
@@ -125,17 +126,17 @@ RSpec.describe Task, type: :feature do
   def create_task_with(form, title, description)
     visit new_task_path
     within(form) do
-      fill_in '任務名稱', with: title
-      fill_in '內容', with: description
-      click_on '新增任務'
+      fill_in "#{I18n.t('tasks.table.title')}", with: title
+      fill_in "#{I18n.t('tasks.table.description')}", with: description
+      find('input[name="commit"]').click
     end
   end
 
   def edit_task_with(form, new_title = nil, new_description = nil)
     within(form) do
-      fill_in '任務名稱', with: new_title
-      fill_in '內容', with: new_description
-      click_on '更新任務'
+      fill_in "#{I18n.t('tasks.table.title')}", with: new_title
+      fill_in "#{I18n.t('tasks.table.description')}", with: new_description
+      find('input[name="commit"]').click
     end
   end
 end 
