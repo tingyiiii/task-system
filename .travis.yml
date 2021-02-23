@@ -15,4 +15,4 @@ install:
   - yarn
 script:
   - bundle exec rake db:migrate:reset RAILS_ENV=test
-  - bundle exec rails rspec
+  - bundle exec rails spec
