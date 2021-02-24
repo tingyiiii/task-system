@@ -1,11 +1,15 @@
 zh-TW:
   activerecord:
     models:
-      task: "任務"
+      task: '任務'
     attributes:
       task:
-        title: "任務名稱"
-        description: "內容"
+        title: '任務名稱'
+        description: '內容'
+        priority: '優先度'
+        status: '目前狀態'
+        start_time: '開始時間'
+        end_time: '結束時間'
     errors:
       models:
         task:

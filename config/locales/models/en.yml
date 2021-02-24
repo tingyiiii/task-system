@@ -1,11 +1,15 @@
 en:
   activerecord:
     models:
-      task: "Task"
+      task: 'Task'
     attributes:
       task:
-        title: "Title"
-        description: "Description"
+        title: 'Title'
+        description: 'Description'
+        priority: 'Priority'
+        status: 'Status'
+        start_time: 'Start Time'
+        end_time: 'End Time'
     errors:
       models:
         task:

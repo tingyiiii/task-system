@@ -9,13 +9,20 @@ en:
       create_a_new_task: 'Create a new task'
     table:
       title: 'Task'
+      description: 'Description'
       priority: 'Priority'
+      status: 'Status'
       start_time: 'Start Time'
       end_time: 'End Time'
-      status: 'Status'
-      description: 'Description'
     form:
       placeholder:
         title: "e.g. Sweep the floor"
         description: "e.g. Also take garbage out to the bin"
+    options:
+      low: 'Low'
+      medium: 'Medium'
+      high: 'High'
+      pending: 'Pending'
+      processing: 'Processing'
+      completed: 'Completed'
     back_to_task_list: 'Back to Task List' 

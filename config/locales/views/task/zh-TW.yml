@@ -9,15 +9,21 @@ zh-TW:
       create_a_new_task: '新增任務'
     table:
       title: '任務名稱'
+      description: '內容'
       priority: '優先度'
+      status: '目前狀態'
       start_time: '開始時間'
       end_time: '結束時間'
-      status: '目前狀態'
-      description: '內容'
     form:
       placeholder:
         title: "例：掃地"
         description: "例：順便把垃圾拿出去外面丟"
     form_select:
-      
+    options:
+      low: '低'
+      medium: '中'
+      high: '高'
+      pending: '待處理'
+      processing: '進行中'
+      completed: '已完成'
     back_to_task_list: '回到任務清單' 

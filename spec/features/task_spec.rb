@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :feature do
-  let(:title) { Faker::Lorem.sentence }
-  let(:description) { Faker::Lorem.paragraph }
-
   describe 'visit the index of tasks' do
+    before do
+      create_list(:task, 3)
+    end
+
     it "checks tasks can be showed on index page"do
-      3.times do
-        Task.create(title: title, description: description)
-      end
       visit tasks_path
 
       expect(page).to have_css(
@@ -41,6 +39,9 @@ RSpec.describe Task, type: :feature do
   end
 
   describe 'create a task' do
+    let(:title) { Faker::Lorem.sentence }
+    let(:description) { Faker::Lorem.paragraph }
+    
     it 'with title and description' do
       create_task_with("#new_task", title, description)
       expect(Task.all.size).to be 1
@@ -67,17 +68,18 @@ RSpec.describe Task, type: :feature do
   end
 
   describe 'view a task' do
+    let(:task){ create(:task) }
+
     it do
-      task = Task.create(title: title, description: description)
       visit task_path(task)
 
-      expect(page).to have_content(title)
-      expect(page).to have_content(description)
+      expect(page).to have_content(task.title)
+      expect(page).to have_content(task.description)
     end
   end
 
   describe 'edit a task' do
-    let(:task) { Task.create(title: title, description: description) }
+    let(:task){ create(:task) }
     let(:new_title) { Faker::Lorem.sentence }
     let(:new_description) { Faker::Lorem.paragraph }
 
@@ -111,7 +113,7 @@ RSpec.describe Task, type: :feature do
 
   describe 'delete a task' do
     it do
-      Task.create(title: title, description: description)
+      create(:task)
       visit tasks_path
 
       click_on "#{I18n.t('link.delete')}"
@@ -121,16 +123,16 @@ RSpec.describe Task, type: :feature do
   end
 
   describe 'order' do
-    before :each do
+    before do
       @tasks = []
       3.times do
-        task = Task.create(title: title, description: description)
+        task = create(:task)
         @tasks << task
       end
       visit tasks_path
     end
 
-    it 'order by created time asc' do
+    it 'by created time asc' do
       within('table') do
         expect(page).to have_content(
           /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
@@ -147,7 +149,7 @@ RSpec.describe Task, type: :feature do
       end
     end
 
-    it 'order by created time desc' do
+    it 'by created time desc' do
       within('table') do
         expect(page).to have_content(
           /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
@@ -171,6 +173,8 @@ RSpec.describe Task, type: :feature do
     within(form) do
       fill_in "#{I18n.t('tasks.table.title')}", with: title
       fill_in "#{I18n.t('tasks.table.description')}", with: description
+      fill_in "#{I18n.t('tasks.table.start_time')}", with: Time.now
+      fill_in "#{I18n.t('tasks.table.end_time')}", with: Faker::Time.forward
       find('input[name="commit"]').click
     end
   end
