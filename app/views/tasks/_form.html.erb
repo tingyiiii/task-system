@@ -18,16 +18,16 @@
 
   <li>
     <%= form.label :priority, I18n.t("tasks.table.priority") %>
-    <%= form.select(:priority, options_for_select([[I18n.t("tasks.options.low"), 0],
-                                                   [I18n.t("tasks.options.medium"), 1], 
-                                                   [I18n.t("tasks.options.high"), 2]])) %>
+    <%= form.select(:priority, options_for_select([[I18n.t("tasks.priority.low"), "low"],
+                                                   [I18n.t("tasks.priority.medium"), "medium"], 
+                                                   [I18n.t("tasks.priority.high"), "high"]])) %>
   </li>
 
   <li>
     <%= form.label :status, I18n.t("tasks.table.status") %>
-    <%= form.select(:priority, options_for_select([[I18n.t("tasks.options.pending"), 0],
-                                                  [I18n.t("tasks.options.processing"), 1], 
-                                                  [I18n.t("tasks.options.completed"), 2]])) %>
+    <%= form.select(:status, options_for_select([[I18n.t("tasks.status.pending"), "pending"],
+                                                 [I18n.t("tasks.status.processing"), "processing"], 
+                                                 [I18n.t("tasks.status.completed"), "completed"]])) %>
   </li>
 
   </li>

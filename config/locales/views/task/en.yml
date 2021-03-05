@@ -14,14 +14,16 @@ en:
       status: 'Status'
       start_time: 'Start Time'
       end_time: 'End Time'
+      created_at: 'Created at'
     form:
       placeholder:
         title: "e.g. Sweep the floor"
         description: "e.g. Also take garbage out to the bin"
-    options:
+    priority:
       low: 'Low'
       medium: 'Medium'
       high: 'High'
+    status:
       pending: 'Pending'
       processing: 'Processing'
       completed: 'Completed'
