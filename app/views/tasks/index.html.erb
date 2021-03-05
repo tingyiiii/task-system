@@ -1,13 +1,7 @@
 <h1><%= I18n.t("tasks.heading.index") %></h1>
 
-<%= form_tag({ controller: "tasks", action: "index" }, method: "get", class: "order") do %>
-  <%= radio_button_tag(:order, "created_asc") %>
-  <%= label_tag(:order_created_asc, I18n.t("order.created_asc")) %>
-  <%= radio_button_tag(:order, "created_desc") %>
-  <%= label_tag(:order_created_desc, I18n.t("order.created_desc")) %>
-
-  <%= submit_tag(I18n.t("order.submit")) %>
-<% end %>
+<%= link_to I18n.t("order.created_asc"), tasks_path(order: "created_asc")%>
+<%= link_to I18n.t("order.created_desc"), tasks_path(order: "created_desc")%>
 
 <table>
   <thead>

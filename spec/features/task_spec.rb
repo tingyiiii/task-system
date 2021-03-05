@@ -133,15 +133,7 @@ RSpec.describe Task, type: :feature do
     end
 
     it 'by created time asc' do
-      within('table') do
-        expect(page).to have_content(
-          /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
-        )
-      end
-      within('form.order') do
-        choose I18n.t("order.created_asc")
-        click_on I18n.t("order.submit")
-      end
+      click_on I18n.t("order.created_asc")
       within('table') do
         expect(page).to have_content(
           /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
@@ -150,15 +142,7 @@ RSpec.describe Task, type: :feature do
     end
 
     it 'by created time desc' do
-      within('table') do
-        expect(page).to have_content(
-          /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
-        )
-      end
-      within('form.order') do
-        choose I18n.t("order.created_desc")
-        click_on I18n.t("order.submit")
-      end
+      click_on I18n.t("order.created_desc")
       within('table') do
         expect(page).to have_content(
           /#{@tasks[2][:title]}+#{@tasks[1][:title]}+#{@tasks[0][:title]}/
