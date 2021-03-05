@@ -1,20 +1,18 @@
 <h1><%= I18n.t("tasks.heading.index") %></h1>
 
-<%= form_tag({ controller: "tasks", action: "index" }, method: "get", class: "order") do %>
-  <%= radio_button_tag(:order, "created_asc") %>
-  <%= label_tag(:order_created_asc, I18n.t("order.created_asc")) %>
-  <%= radio_button_tag(:order, "created_desc") %>
-  <%= label_tag(:order_created_desc, I18n.t("order.created_desc")) %>
-
-  <%= submit_tag(I18n.t("order.submit")) %>
-<% end %>
+<%= link_to I18n.t("order.created_asc"), tasks_path(order: "created_asc")%>
+<%= link_to I18n.t("order.created_desc"), tasks_path(order: "created_desc")%>
 
 <table>
   <thead>
     <tr>
       <th><%= I18n.t("tasks.table.title") %></th>
       <th><%= I18n.t("tasks.table.description") %></th>
-      <th></th>
+      <th><%= I18n.t("tasks.table.priority") %></th>
+      <th><%= I18n.t("tasks.table.status") %></th>
+      <th><%= I18n.t("tasks.table.start_time") %></th>
+      <th><%= I18n.t("tasks.table.end_time") %></th>
+      <th><%= I18n.t("tasks.table.created_at") %></th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +20,10 @@
     <tr>
       <td><%= link_to task.title, task %></td>
       <td><%= task.description %></td>
+      <td><%= I18n.t("tasks.priority.#{task.priority}") %></td>
+      <td><%= I18n.t("tasks.status.#{task.status}") %></td>
+      <td><%= "#{task.start_time.strftime("%Y")}/#{task.start_time.strftime("%m")}/#{task.start_time.strftime("%d")} #{task.start_time.strftime("%H")}:#{task.start_time.strftime("%M")}" %></td>
+      <td><%= "#{task.end_time.strftime("%Y")}/#{task.end_time.strftime("%m")}/#{task.end_time.strftime("%d")} #{task.end_time.strftime("%H")}:#{task.end_time.strftime("%M")}" %></td>
       <td><%= "#{task.created_at.strftime("%Y")}/#{task.created_at.strftime("%m")}/#{task.created_at.strftime("%d")}" %></td>
       <td><%= link_to I18n.t("link.edit"), edit_task_path(task) %></td>
       <td><%= link_to I18n.t("link.delete"), task, method: :delete, data: { confirm: "#{I18n.t("are_you_sure_to_delete", item: task.title)}" } %></td>

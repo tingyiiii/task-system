@@ -4,12 +4,44 @@
   <% end %>
 <% end %>
 
+<ul>
 <%= form_for(task) do |form| %>
-  <%= form.label :title, I18n.t("tasks.table.title") %>
-  <%= form.text_field :title %>
+  <li>
+    <%= form.label :title, I18n.t("tasks.table.title") %>
+    <%= form.text_field :title %>
+  </li>
 
-  <%= form.label :description, I18n.t("tasks.table.description") %>
-  <%= form.text_field :description %>
+  <li>
+    <%= form.label :description, I18n.t("tasks.table.description") %>
+    <%= form.text_field :description %>
+  </li>
+
+  <li>
+    <%= form.label :priority, I18n.t("tasks.table.priority") %>
+    <%= form.select(:priority, options_for_select([[I18n.t("tasks.priority.low"), "low"],
+                                                   [I18n.t("tasks.priority.medium"), "medium"], 
+                                                   [I18n.t("tasks.priority.high"), "high"]])) %>
+  </li>
+
+  <li>
+    <%= form.label :status, I18n.t("tasks.table.status") %>
+    <%= form.select(:status, options_for_select([[I18n.t("tasks.status.pending"), "pending"],
+                                                 [I18n.t("tasks.status.processing"), "processing"], 
+                                                 [I18n.t("tasks.status.completed"), "completed"]])) %>
+  </li>
+
+  </li>
+
+  <li>
+    <%= form.label :start_time, I18n.t("tasks.table.start_time") %>
+    <%= form.datetime_field :start_time %>
+  </li>
+
+  <li>
+    <%= form.label :end_time, I18n.t("tasks.table.end_time") %>
+    <%= form.datetime_field :end_time %>
+  </li>
 
   <%= form.submit %>
 <% end %>
+</ul>
