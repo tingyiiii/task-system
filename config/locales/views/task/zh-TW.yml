@@ -28,4 +28,5 @@ zh-TW:
       pending: '待處理'
       processing: '進行中'
       completed: '已完成'
-    back_to_task_list: '回到任務清單' 
+    back_to_task_list: '回到任務清單'
+    end_time_after_start_time: '必須晚於開始時間'

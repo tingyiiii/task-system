@@ -1,7 +1,9 @@
 <h1><%= t("tasks.heading.index") %></h1>
 
-<%= link_to t("order.created_asc"), tasks_path(order: "asc")%>
-<%= link_to t("order.created_desc"), tasks_path(order: "desc")%>
+<%= link_to t("order.created_asc"), tasks_path(created_at: "asc")%>
+<%= link_to t("order.created_desc"), tasks_path(created_at: "desc")%>
+<%= link_to t("order.end_time_asc"), tasks_path(end_time: "asc")%>
+<%= link_to t("order.end_time_desc"), tasks_path(end_time: "desc")%>
 
 <table>
   <thead>

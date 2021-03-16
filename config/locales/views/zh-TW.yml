@@ -9,4 +9,6 @@ zh-TW:
   order:
     created_asc: '建立時間(舊→新)'
     created_desc: '建立時間(新→舊)'
+    end_time_asc: '結束時間(近→遠)'
+    end_time_desc: '結束時間(遠→近)'
     submit: '排序'

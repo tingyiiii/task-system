@@ -27,4 +27,5 @@ en:
       pending: 'Pending'
       processing: 'Processing'
       completed: 'Completed'
-    back_to_task_list: 'Back to Task List' 
+    back_to_task_list: 'Back to Task List'
+    end_time_after_start_time: 'must be after the start time'
