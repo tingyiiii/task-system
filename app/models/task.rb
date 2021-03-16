@@ -11,6 +11,5 @@ class Task < ApplicationRecord
   validates :end_time, presence: true
 
   # scopes
-  scope :created_time_asc, -> { order("created_at asc") }
-  scope :created_time_desc, -> { order("created_at desc") }
+  scope :with_order, -> (order){ order("created_at #{order}") if order }
 end

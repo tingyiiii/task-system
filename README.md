@@ -37,8 +37,8 @@
   |title|*str*| 
   |start_time|*str*| 
   |end_time|*str*| 
-  |priority|*str*| 
-  |status|*str*| 
+  |priority|*int*| 
+  |status|*int*| 
   |discription|*str*| 
   |user_id|*str*| 
 
@@ -55,5 +55,12 @@
   |task_id|*int*| 
   |tag_id|*int*| 
 
+***
+## Deploy the app to Heroku
+1. Create a Heroku account
+2. Download & install the heroku CLI
+3. Run `$ heroku create`, you could assign the name for app by run `$ heroku create (your app name)` instead
+4. Run `$ git push heroku master` to push your code to heroku from master branch, or run `$ git push heroku (your branch name):master` to push another branch
+5. Run `$ heroku run rails db:migrate` if this is your first time pushing code
 
 
