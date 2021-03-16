@@ -1,9 +1,9 @@
 <ul>
   <li>
-    <%= link_to I18n.t("link.root"), root_path %>
+    <%= link_to t("link.root"), root_path %>
   </li>
   <li>
-    <%= link_to I18n.t("link.create_a_new_task"), new_task_path %>
+    <%= link_to t("link.create_a_new_task"), new_task_path %>
   </li>
   <li>
     <%= link_to "中文版", controller: controller_name, action: action_name, locale: "zh-TW" %>
