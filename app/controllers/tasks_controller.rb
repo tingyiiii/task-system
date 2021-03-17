@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tasks = Task.with_order(params[:order])
+    @tasks = Task.order_by_created_at(params[:created_at]).order_by_end_time(params[:end_time])
   end
 
   def new

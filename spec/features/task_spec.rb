@@ -125,9 +125,8 @@ RSpec.describe Task, type: :feature do
   describe 'order' do
     before do
       @tasks = []
-      3.times do
-        task = create(:task)
-        @tasks << task
+      1.upto(3) do |i|
+        Task.create(title: "title #{i}", description: "subject #{i}", start_time: "2021/Mar/0#{i} 22:29:00", end_time: "2021/Mar/2#{i} 22:35:00")
       end
       visit tasks_path
     end
@@ -136,7 +135,7 @@ RSpec.describe Task, type: :feature do
       click_on I18n.t("order.created_asc")
       within('table') do
         expect(page).to have_content(
-          /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
+          /title 1.*title 2.*title 3/
         )
       end
     end
@@ -145,7 +144,25 @@ RSpec.describe Task, type: :feature do
       click_on I18n.t("order.created_desc")
       within('table') do
         expect(page).to have_content(
-          /#{@tasks[2][:title]}+#{@tasks[1][:title]}+#{@tasks[0][:title]}/
+          /title 3.*title 2.*title 1/
+        )
+      end
+    end
+
+    it 'by end time asc' do
+      click_on I18n.t("order.end_time_asc")
+      within('table') do
+        expect(page).to have_content(
+          /title 1.*title 2.*title 3/
+        )
+      end
+    end
+
+    it 'by end time desc' do
+      click_on I18n.t("order.end_time_desc")
+      within('table') do
+        expect(page).to have_content(
+          /title 3.*title 2.*title 1/
         )
       end
     end

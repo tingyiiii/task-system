@@ -9,4 +9,6 @@ en:
   order:
     created_asc: 'Date Created'
     created_desc: 'Date Created(Decending)'
+    end_time_asc: 'Task End Time'
+    end_time_desc: 'Task End Time(Decending)'
     submit: 'Order'

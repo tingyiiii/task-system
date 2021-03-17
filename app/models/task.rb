@@ -9,7 +9,18 @@ class Task < ApplicationRecord
   validates :status, presence: true, inclusion: { in: %w(pending processing completed) }
   validates :start_time, presence: true
   validates :end_time, presence: true
+  validate :end_time_after_start_time
 
   # scopes
-  scope :with_order, -> (order){ order("created_at #{order}") if order }
+  scope :order_by_created_at, -> (order){ order("created_at #{order}") if order }
+  scope :order_by_end_time, -> (order){ order("end_time #{order}") if order }
+
+  private
+  def end_time_after_start_time
+    return if end_time.blank? || start_time.blank?
+ 
+    if end_time <= start_time
+      errors.add(:end_time, I18n.t('tasks.end_time_after_start_time')) 
+    end
+  end
 end
